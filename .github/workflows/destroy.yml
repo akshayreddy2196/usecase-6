@@ -7,8 +7,7 @@ on:
         description: 'Environment to deploy'
         required: true
         default: 'dev'
-
-# jobs:
+jobs:
 #   alb:
 #     runs-on: ubuntu-latest
 #     name: "alb - destroy"
@@ -62,10 +61,10 @@ on:
 #       run: terraform destroy -auto-approve
 
 ######################################################################
-eks:
+ eks:
     runs-on: ubuntu-latest
     name: "eks - destroy"
-    needs: alb # Wait for the alb job to complete
+    # needs: alb # Wait for the alb job to complete
     defaults:
       run:
         working-directory: ./eks/
@@ -109,7 +108,7 @@ eks:
       run: terraform destroy -auto-approve
   
 ############################################################################  
-  sg:
+ sg:
     runs-on: ubuntu-latest
     name: "SG - destroy"
     needs: eks # Wait for the VPC job to complete
@@ -156,7 +155,7 @@ eks:
       run: terraform destroy -auto-approve
 
 #######################################################################  
-  vpc:
+ vpc:
     runs-on: ubuntu-latest
     name: "VPC - Destroy"
     needs: sg # Wait for the VPC job to complete
