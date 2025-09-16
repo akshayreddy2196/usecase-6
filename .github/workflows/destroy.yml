@@ -62,7 +62,7 @@ on:
 #       run: terraform destroy -auto-approve
 
 ######################################################################
-  eks:
+eks:
     runs-on: ubuntu-latest
     name: "eks - destroy"
     needs: alb # Wait for the alb job to complete
